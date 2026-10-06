@@ -93,7 +93,7 @@ class DeformableTransformer(nn.Module):
                 nn.init.xavier_uniform_(p)
         
     def forward(self, query, value, pos=None):
-        x = query + pos
+        x = query if pos is None else query + pos
         
         memory = self.encoder1(x, value)
         
